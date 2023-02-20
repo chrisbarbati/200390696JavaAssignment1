@@ -7,11 +7,11 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class StudentCardAplication extends Application {
+public class StudentCardApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(StudentCardAplication.class.getResource("studentCardView.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1000, 800);
+        FXMLLoader fxmlLoader = new FXMLLoader(StudentCardApplication.class.getResource("studentCardView.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
