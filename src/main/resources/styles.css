@@ -1,3 +1,19 @@
 /*
     Image attributions: Blue Background, Dana Tentis https://www.pexels.com/photo/turned-on-bokeh-light-370799/
  */
+
+#nextButton{
+    -fx-font-size: 2em;
+}
+
+#studentNameLabel{
+    -fx-font-size: 3em;
+}
+
+#studentNumLabel {
+    -fx-font-size: 3em;
+}
+
+#activityLabel{
+    -fx-font-size: 4em;
+}

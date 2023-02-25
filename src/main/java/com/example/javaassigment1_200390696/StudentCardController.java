@@ -53,7 +53,6 @@ public class StudentCardController implements Initializable {
         for(String activity : studentsList.get(currentStudent).getStudentActivities()){
             labelList.add(new Label(activity));
         }
-
         activityHolder.getChildren().setAll(labelList);
 
         studentNameLabel.setText("Name: " + studentsList.get(currentStudent).getFirstName() + " " + studentsList.get(currentStudent).getLastName());
@@ -85,6 +84,11 @@ public class StudentCardController implements Initializable {
 
         Image studentPicture2 = new Image("portrait1.jpg");
         ArrayList studentActivities2 = new ArrayList();
+        studentActivities.add("Hiking");
+        studentActivities.add("Hiking");
+        studentActivities.add("Hiking");
+        studentActivities.add("Hiking");
+        studentActivities.add("Hiking");
         studentActivities.add("Hiking");
 
 
