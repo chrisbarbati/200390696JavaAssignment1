@@ -12,7 +12,7 @@ public class StudentCardApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(StudentCardApplication.class.getResource("studentCardView.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
-        stage.setTitle("Hello!");
+        stage.setTitle("Student Card");
         stage.setScene(scene);
         stage.show();
     }

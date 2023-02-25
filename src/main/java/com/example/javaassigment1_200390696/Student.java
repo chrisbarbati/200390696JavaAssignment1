@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Student {
     /**
      * Two ArrayLists. validActivities holds the different activities that a student object is permitted to hold.
-     * validActivities is static so it's identical for each student
+     * validActivities is static so it belongs to all students
      *
      * studentActivities holds the different activities that each individual student enjoys.
      */
@@ -30,11 +30,19 @@ public class Student {
      * Default constructor
      */
     public Student(ArrayList<String> studentActivities, Image studentPicture, int studentNumber, String firstName, String lastName) {
-        setStudentActivities(studentActivities);
+        setStudentActivities(studentActivities, validActivities);
         setStudentPicture(studentPicture);
         setStudentNumber(studentNumber);
         setFirstName(firstName);
         setLastName(lastName);
+    }
+
+    /**
+     * Function to add an activity to the validActivities list from other classes
+     */
+
+    public static void addValidActivity(String activity){
+        validActivities.add(activity);
     }
 
     /**
@@ -53,8 +61,16 @@ public class Student {
         return studentActivities;
     }
 
-    public void setStudentActivities(ArrayList<String> studentActivities) {
-        this.studentActivities = studentActivities;
+    public void setStudentActivities(ArrayList<String> studentActivities, ArrayList<String> validActivities) {
+        for(String activity : studentActivities){
+            if(validActivities.contains(activity)){
+                this.studentActivities.add(activity);
+            }
+            else{
+                throw new IllegalArgumentException();
+            }
+        }
+
     }
 
     public Image getStudentPicture() {

@@ -5,22 +5,22 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 
 import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.*;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 public class StudentCardController implements Initializable {
+
     @FXML
-    private ListView<?> activityPane;
+    private VBox activityHolder;
 
     @FXML
     private Circle imageCircle;
@@ -47,36 +47,63 @@ public class StudentCardController implements Initializable {
             currentStudent = 0;
         }
 
+        ArrayList<Label> labelList = new ArrayList<>();
+
+        //Fill the activities
+        for(String activity : studentsList.get(currentStudent).getStudentActivities()){
+            labelList.add(new Label(activity));
+        }
+
+        activityHolder.getChildren().setAll(labelList);
+
         studentNameLabel.setText("Name: " + studentsList.get(currentStudent).getFirstName() + " " + studentsList.get(currentStudent).getLastName());
         studentNumLabel.setText("Student Number: " + studentsList.get(currentStudent).getStudentNumber());
         imageCircle.setFill(new ImagePattern(studentsList.get(currentStudent).getStudentPicture()));
-
-
         }
 
-        private ArrayList<Student> studentsList = new ArrayList<>();
+    private ArrayList<Student> studentsList = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        /**
+         * Add to the list of valid activities
+         */
+        Student.addValidActivity("Hiking");
+        Student.addValidActivity("Swimming");
+        Student.addValidActivity("Running");
+        Student.addValidActivity("Sports");
+        Student.addValidActivity("Coding");
+        Student.addValidActivity("Gaming");
 
         /**
          * Initialize a student (testing view, come back to this later to clean up implementation
          */
-        Image studentPicture1 = new Image("C:\\Users\\Chris\\IdeaProjects\\200390696JavaAssignment1\\src\\main\\resources\\com\\example\\javaassigment1_200390696\\portrait1.jpg");
+        Image studentPicture1 = new Image("portrait1.jpg");
         ArrayList studentActivities = new ArrayList();
-        studentActivities.add("Hiking");
+        studentActivities.add("Swimming");
         Student barbatiChristian = new Student(studentActivities, studentPicture1, 200390696, "Christian", "Barbati");
 
-        Image studentPicture2 = new Image("C:\\Users\\Chris\\IdeaProjects\\200390696JavaAssignment1\\src\\main\\resources\\com\\example\\javaassigment1_200390696\\portrait1.jpg");
+        Image studentPicture2 = new Image("portrait1.jpg");
         ArrayList studentActivities2 = new ArrayList();
         studentActivities.add("Hiking");
+
+
         Student barbatiChristian2 = new Student(studentActivities, studentPicture2, 204353256, "Test2", "Test3");
 
+        /**
+         * Add the instantiated students to the list.
+         */
         studentsList.add(barbatiChristian);
-
         studentsList.add(barbatiChristian2);
+
+        /**
+         * Set the listener for the next button
+         */
         nextButton.setOnMouseClicked(event -> nextCard());
 
+        /**
+         * Set the initial values for the studentCardView
+         */
         studentNameLabel.setText("Name: " + studentsList.get(0).getFirstName() + " " + studentsList.get(0).getLastName());
         studentNumLabel.setText("Student Number: " + studentsList.get(0).getStudentNumber());
         imageCircle.setFill(new ImagePattern(studentsList.get(0).getStudentPicture()));
