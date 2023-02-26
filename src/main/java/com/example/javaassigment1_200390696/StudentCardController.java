@@ -14,6 +14,7 @@ import java.util.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
@@ -36,6 +37,9 @@ public class StudentCardController implements Initializable {
 
     private int currentStudent = 0;
 
+
+    ArrayList<Label> labelList = new ArrayList<>();
+
     /**
      * Function to be called when the next button is pressed. Should move to next student item in studentList
      * and update the view accordingly.
@@ -47,7 +51,8 @@ public class StudentCardController implements Initializable {
             currentStudent = 0;
         }
 
-        ArrayList<Label> labelList = new ArrayList<>();
+        //Clear the prior activities
+        labelList.removeAll(labelList);
 
         //Fill the activities
         for(String activity : studentsList.get(currentStudent).getStudentActivities()){
@@ -77,22 +82,24 @@ public class StudentCardController implements Initializable {
         /**
          * Initialize a student (testing view, come back to this later to clean up implementation
          */
-        Image studentPicture1 = new Image("portrait1.jpg");
         ArrayList studentActivities = new ArrayList();
         studentActivities.add("Swimming");
-        Student barbatiChristian = new Student(studentActivities, studentPicture1, 200390696, "Christian", "Barbati");
+        studentActivities.add("Swimming");
+        studentActivities.add("Swimming");
+        studentActivities.add("Swimming");
+        studentActivities.add("Swimming");
+        studentActivities.add("Swimming");
+        studentActivities.add("Swimming");
+        studentActivities.add("Swimming");
+        studentActivities.add("Swimming");
+        studentActivities.add("Swimming");
 
-        Image studentPicture2 = new Image("portrait1.jpg");
+        Student barbatiChristian = new Student(studentActivities, new Image("portrait1.jpg"), 200390696, "Christian", "Barbati");
+
         ArrayList studentActivities2 = new ArrayList();
-        studentActivities.add("Hiking");
-        studentActivities.add("Hiking");
-        studentActivities.add("Hiking");
-        studentActivities.add("Hiking");
-        studentActivities.add("Hiking");
-        studentActivities.add("Hiking");
+        studentActivities2.add("Hiking");
 
-
-        Student barbatiChristian2 = new Student(studentActivities, studentPicture2, 204353256, "Test2", "Test3");
+        Student barbatiChristian2 = new Student(studentActivities2, new Image("portrait1.jpg"), 204353256, "Test2", "Test3");
 
         /**
          * Add the instantiated students to the list.
@@ -111,5 +118,11 @@ public class StudentCardController implements Initializable {
         studentNameLabel.setText("Name: " + studentsList.get(0).getFirstName() + " " + studentsList.get(0).getLastName());
         studentNumLabel.setText("Student Number: " + studentsList.get(0).getStudentNumber());
         imageCircle.setFill(new ImagePattern(studentsList.get(0).getStudentPicture()));
+
+        //Fill the activities
+        for(String activity : studentsList.get(currentStudent).getStudentActivities()){
+            labelList.add(new Label(activity));
+        }
+        activityHolder.getChildren().setAll(labelList);
     }
 }
