@@ -84,28 +84,26 @@ public class StudentCardController implements Initializable {
          */
         ArrayList studentActivities = new ArrayList();
         studentActivities.add("Swimming");
-        studentActivities.add("Swimming");
-        studentActivities.add("Swimming");
-        studentActivities.add("Swimming");
-        studentActivities.add("Swimming");
-        studentActivities.add("Swimming");
-        studentActivities.add("Swimming");
-        studentActivities.add("Swimming");
-        studentActivities.add("Swimming");
-        studentActivities.add("Swimming");
 
         Student barbatiChristian = new Student(studentActivities, new Image("portrait1.jpg"), 200390696, "Christian", "Barbati");
 
         ArrayList studentActivities2 = new ArrayList();
         studentActivities2.add("Hiking");
 
-        Student barbatiChristian2 = new Student(studentActivities2, new Image("portrait1.jpg"), 204353256, "Test2", "Test3");
+        Student smithJane = new Student(studentActivities2, new Image("portrait2.jpg"), 204353256, "Jane", "Smith");
+
+        ArrayList studentActivities3 = new ArrayList();
+        studentActivities3.add("Gaming");
+
+        Student bakerMatt = new Student(studentActivities3, new Image("portrait3.jpg"), 149204124, "Matt", "Baker");
+
 
         /**
          * Add the instantiated students to the list.
          */
         studentsList.add(barbatiChristian);
-        studentsList.add(barbatiChristian2);
+        studentsList.add(smithJane);
+        studentsList.add(bakerMatt);
 
         /**
          * Set the listener for the next button
