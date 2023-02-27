@@ -59,7 +59,7 @@ public class Student {
      */
     public void setStudentActivities(ArrayList<String> studentActivities, ArrayList<String> validActivities) {
         /**
-         * Iterates over every activity in the passed studentActivities ArrayList, and adds them to the instance studentActivities
+         * Iterates over every activity in the ArrayList passed, and adds them to the instance studentActivities
          * ArrayList if they pass validation. If one does not pass validation, throws an exception.
          *
          * Also checks to make sure that instance studentActivities does not already contain the activity, to prevent

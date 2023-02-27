@@ -110,6 +110,9 @@ public class StudentCardController implements Initializable {
 
         /**
          * Jane Smith likes all the activities, in order to demonstrate the scrollPane
+         * Image Attributions:
+         * Anastasiya Gepp - https://www.pexels.com/photo/woman-standing-in-hallway-while-holding-book-1462630/
+         * Buro Millenial - https://www.pexels.com/photo/selective-focus-photo-of-man-using-laptop-1438081/
          */
         new Student(
                 new ArrayList<String>(Arrays.asList("Hiking", "Swimming", "Running", "Coding", "Soccer", "Baseball", "Basketball", "Hockey")),
