@@ -37,7 +37,14 @@ public class StudentCardController implements Initializable {
 
     private int currentStudent = 0;
 
+    /**
+     * ArrayList to hold the Student objects, so we can iterate over them easily later
+     */
+    private ArrayList<Student> studentsList;
 
+    /**
+     * Arraylist to hold the Label objects with which I will populate the activities on the card view
+     */
     ArrayList<Label> labelList = new ArrayList<>();
 
     /**
@@ -51,21 +58,25 @@ public class StudentCardController implements Initializable {
             currentStudent = 0;
         }
 
-        //Clear the prior activities
+        /**
+         * Remove all activities from the labelList, repopulate it with the current student's
+         * favourite activities, and then populate the activityHolder VBox with the list items
+         */
         labelList.removeAll(labelList);
 
-        //Fill the activities
         for(String activity : studentsList.get(currentStudent).getStudentActivities()){
             labelList.add(new Label(activity));
         }
+
         activityHolder.getChildren().setAll(labelList);
 
+        /**
+         * Update the other fields with the new student's data
+         */
         studentNameLabel.setText("Name: " + studentsList.get(currentStudent).getFirstName() + " " + studentsList.get(currentStudent).getLastName());
         studentNumLabel.setText("Student Number: " + studentsList.get(currentStudent).getStudentNumber());
         imageCircle.setFill(new ImagePattern(studentsList.get(currentStudent).getStudentPicture()));
         }
-
-    private ArrayList<Student> studentsList = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -75,38 +86,50 @@ public class StudentCardController implements Initializable {
         Student.addValidActivity("Hiking");
         Student.addValidActivity("Swimming");
         Student.addValidActivity("Running");
-        Student.addValidActivity("Sports");
         Student.addValidActivity("Coding");
-        Student.addValidActivity("Gaming");
+        Student.addValidActivity("Soccer");
+        Student.addValidActivity("Baseball");
+        Student.addValidActivity("Basketball");
+        Student.addValidActivity("Hockey");
+
 
         /**
-         * Initialize a student (testing view, come back to this later to clean up implementation
+         * Instantiate three student objects directly into studentsList ArrayList
+         * Instantiated ArrayList and Image objects within the constructor to make code neater
          */
-        ArrayList studentActivities = new ArrayList();
-        studentActivities.add("Swimming");
 
-        Student barbatiChristian = new Student(studentActivities, new Image("portrait1.jpg"), 200390696, "Christian", "Barbati");
+        studentsList = new ArrayList<>(Arrays.asList(
 
-        ArrayList studentActivities2 = new ArrayList();
-        studentActivities2.add("Hiking");
-
-        Student smithJane = new Student(studentActivities2, new Image("portrait2.jpg"), 204353256, "Jane", "Smith");
-
-        ArrayList studentActivities3 = new ArrayList();
-        studentActivities3.add("Gaming");
-
-        Student bakerMatt = new Student(studentActivities3, new Image("portrait3.jpg"), 149204124, "Matt", "Baker");
-
+        new Student(
+                new ArrayList<String>(Arrays.asList("Hiking", "Coding", "Running")),
+                new Image("portrait1.jpg"),
+                200390696,
+                "Christian",
+                "Barbati"
+        ),
 
         /**
-         * Add the instantiated students to the list.
+         * Jane Smith likes all the activities, in order to demonstrate the scrollPane
          */
-        studentsList.add(barbatiChristian);
-        studentsList.add(smithJane);
-        studentsList.add(bakerMatt);
+        new Student(
+                new ArrayList<String>(Arrays.asList("Hiking", "Swimming", "Running", "Coding", "Soccer", "Baseball", "Basketball", "Hockey")),
+                new Image("portrait2.jpg"),
+                204353256,
+                "Jane",
+                "Smith"
+        ),
+
+        new Student(
+                new ArrayList<String>(Arrays.asList("Hiking", "Swimming", "Running")),
+                new Image("portrait3.jpg"),
+                149204124,
+                "Matt",
+                "Baker"
+        )
+        ));
 
         /**
-         * Set the listener for the next button
+         * Set the listener for the "next" button
          */
         nextButton.setOnMouseClicked(event -> nextCard());
 
@@ -117,7 +140,9 @@ public class StudentCardController implements Initializable {
         studentNumLabel.setText("Student Number: " + studentsList.get(0).getStudentNumber());
         imageCircle.setFill(new ImagePattern(studentsList.get(0).getStudentPicture()));
 
-        //Fill the activities
+        /**
+         * Fill the activity labels and populate them into the VBox
+         */
         for(String activity : studentsList.get(currentStudent).getStudentActivities()){
             labelList.add(new Label(activity));
         }
