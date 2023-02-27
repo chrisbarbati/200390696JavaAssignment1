@@ -4,6 +4,7 @@
 
 #nextButton{
     -fx-font-size: 2em;
+    -fx-background-radius: 1em;
 }
 
 #studentNameLabel{
