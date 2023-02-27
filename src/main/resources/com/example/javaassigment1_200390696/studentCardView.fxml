@@ -56,9 +56,9 @@
                         <Insets top="40.0" />
                      </VBox.margin>
                   </Label>
-                  <ScrollPane prefHeight="334.0" prefWidth="632.0">
+                  <ScrollPane prefHeight="335.0" prefWidth="632.0">
                      <content>
-                        <VBox id="activityLabel" fx:id="activityHolder" prefHeight="331.0" prefWidth="654.0" stylesheets="@../../../styles.css" />
+                        <VBox id="activityLabel" fx:id="activityHolder" prefHeight="322.0" prefWidth="628.0" stylesheets="@../../../styles.css" />
                      </content>
                   </ScrollPane>
                </children>

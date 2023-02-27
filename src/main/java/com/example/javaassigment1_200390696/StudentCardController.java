@@ -121,13 +121,15 @@ public class StudentCardController implements Initializable {
                 "Jane",
                 "Smith"
         ),
-
+        /**
+        * Left some empty spaces and uncapitalized words in Matt Smith's name, to demonstrate setter functionality
+        */
         new Student(
                 new ArrayList<String>(Arrays.asList("Hiking", "Swimming", "Running")),
                 new Image("portrait3.jpg"),
                 149204124,
-                "Matt",
-                "Baker"
+                "   matt   ",
+                " baker    "
         )
         ));
 

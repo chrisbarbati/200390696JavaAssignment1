@@ -117,18 +117,15 @@ public class Student {
      */
     public void setFirstName(String firstName) {
         /**
-         * If firstName is shorter than 2 characters, or one/both of the first two characters are white-space, throw exception.
-         * White-space elsewhere in name is permissible.
-         * For example:
-         * " ", "  ", "S arah" should all fail. "Sarah Jane" should pass.
+         * Remove leading and trailing spaces, and capitalize first character
+         * Then validate; if firstName is shorter than 2 characters (not counting white-space), throw an exception.
          */
-        if(firstName.length() < 2 || (firstName.length() >=2 && firstName.substring(0, 2).contains(" "))){
-            throw new IllegalArgumentException(firstName + " was received, but names must begin with at least two non-white-space characters.");
+        firstName = firstName.trim();
+        firstName = firstName.substring(0, 1).toUpperCase() + firstName.substring(1);
+
+        if(firstName.length() < 2){
+            throw new IllegalArgumentException(firstName + " was received, but names must contain at least two non-white-space characters.");
         }else {
-            /**
-             * Convert the first character to uppercase
-             */
-            firstName = firstName.substring(0, 1).toUpperCase() + firstName.substring(1);
             this.firstName = firstName;
         }
     }
@@ -143,18 +140,15 @@ public class Student {
      */
     public void setLastName(String lastName) {
         /**
-         * If lastName is shorter than 2 characters, or one/both of the first two characters are white-space, throw exception.
-         * White-space elsewhere in name is permissible.
-         * For example:
-         * " ", "  ", "B aker" should all fail. "Baker Smith" should pass.
+         * Remove leading and trailing spaces, and capitalize first character
+         * Then validate; if lastName is shorter than 2 characters (not counting white-space), throw an exception.
          */
-        if(lastName.length() < 2 || (lastName.length() >=2 && lastName.substring(0, 2).contains(" "))){
-            throw new IllegalArgumentException(lastName + " was received, but names must begin with at least two non-white-space characters.");
+        lastName = lastName.trim();
+        lastName = lastName.substring(0, 1).toUpperCase() + lastName.substring(1);
+
+        if(lastName.length() < 2){
+            throw new IllegalArgumentException(lastName + " was received, but names must contain at least two non-white-space characters.");
         }else {
-            /**
-             * Convert the first character to uppercase
-             */
-            lastName = lastName.substring(0, 1).toUpperCase() + lastName.substring(1);
             this.lastName = lastName;
         }
     }
